@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://REPLACE-ME/cutwise/sitemap.xml
+Sitemap: https://pinkpelara.github.io/Self-contained-sites/cutwise/sitemap.xml
