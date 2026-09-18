@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free meeting planner across time zones | Time tool</title>
+<meta name="description" content="Pick a date and time, see the local time in 24 world cities, and spot the best overlap for 9 to 5 hours. Free, no account, runs on your device.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0b3d5f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free meeting planner across time zones">
+<meta property="og:description" content="One time in, local times out for 24 cities. Overlap for 9 to 5 highlighted. Free, no account.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free meeting planner across time zones">
+<meta name="twitter:description" content="See a meeting time in 24 cities with daylight saving handled. Free and private.">
+<meta property="og:url" content="https://pinkpelara.github.io/Self-contained-sites/timezones/">
+<link rel="canonical" href="https://pinkpelara.github.io/Self-contained-sites/timezones/">
+<!-- AdSense site verification for pinkpelara.github.io -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5604852097687833" crossorigin="anonymous"></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230b3d5f'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='14'%20fill='none'%20stroke='white'%20stroke-width='4'/%3E%3Cpath%20d='M32%2024v8l6%204'%20fill='none'%20stroke='white'%20stroke-width='4'%20stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Time tool meeting planner","url":"https://pinkpelara.github.io/Self-contained-sites/timezones/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript and Intl time zone data","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free meeting planner that shows one date and time across 24 world cities with daylight saving handled, plus a shareable link.","featureList":"World city times, work hours overlap, shareable link, daylight saving aware"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is daylight saving handled?","acceptedAnswer":{"@type":"Answer","text":"Times come from your browser built-in time zone data through Intl.DateTimeFormat, so spring forward and fall back dates apply on their own."}},{"@type":"Question","name":"What counts as work hours?","acceptedAnswer":{"@type":"Answer","text":"9:00 in the morning up to but not including 5:00 in the afternoon local time. Rows inside that span are marked in hours."}},{"@type":"Question","name":"What does the share link store?","acceptedAnswer":{"@type":"Answer","text":"Only the date, time, and picked zones, encoded in the link hash after the number sign. Nothing uploads."}},{"@type":"Question","name":"Can I trust this for a flight or shift?","acceptedAnswer":{"@type":"Answer","text":"Use it for planning only. Confirm critical times against an official clock or airline page, since browser time zone data can lag."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header><a class="brand" href="./">Time tool<span>One meeting, every local time</span></a><nav aria-label="Main"><a href="#tool">Tool</a><a href="#cities">Cities</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a></nav></header>
+<main>
+<section class="hero"><p class="kicker">Free world meeting planner</p><h1>Find an hour that fits both sides.</h1><p class="intro">Enter a date and time in your zone, tick the cities that matter, and read off each local time. Rows inside 9 to 5 light up, and a link below carries your picks to anyone you send it to.</p><p><a class="button" href="#tool">Plan a meeting</a></p><p class="note">Daylight saving comes from your browser time zone data. Times are for planning; confirm critical bookings elsewhere.</p></section>
+<section class="workspace" id="tool" aria-label="Meeting planner">
+<form id="tz-form"><h2>Your meeting time</h2>
+<div class="fields"><div><label for="date">Date</label><input id="date" name="date" type="date" value="2026-01-15" required></div><div><label for="time">Time, your zone</label><input id="time" name="time" type="time" value="14:00" required></div></div>
+<fieldset class="cities"><legend> Cities to show (24 max)</legend><div id="city-list"></div></fieldset>
+<div class="actions"><button type="submit">Show local times</button><button type="button" id="share" class="secondary">Copy share link</button></div>
+<p id="error" role="alert"></p><p id="share-out" class="hint" aria-live="polite"></p></form>
+<div class="results"><div class="result-top"><h2>Local times</h2><p id="count" class="hint"></p></div><div class="table-wrap"><table id="table"><caption>Local time per city. Rows marked in hours fall inside 9:00 to 17:00 local.</caption><thead><tr><th scope="col">City</th><th scope="col">Local time</th><th scope="col">Offset</th><th scope="col">Work hours</th></tr></thead><tbody id="rows"><tr><td colspan="4">Pick a date and time, then press Show local times.</td></tr></tbody></table></div></div>
+</section>
+<section class="guide" id="cities"><p class="kicker">How to read the table</p><h2>Green rows are inside the work day.</h2><div class="columns"><article><h3>In hours means 9 to 5</h3><p>A city counts as in hours from 9:00 in the morning up to but not including 5:00 in the afternoon local time. Aim for a time with the most green rows.</p></article><article><h3>Offsets use UTC labels</h3><p>Each row shows a UTC offset like UTC-05:00 or UTC+05:30 for that exact date, so daylight saving shifts show up without any extra step from you.</p></article><article><h3>Links carry your picks</h3><p>Copy share link encodes the date, time, and ticked cities after the number sign. Anyone opening it sees the same setup on their own device.</p></article></div></section>
+<section class="faq" id="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions people actually ask</h2>
+<details><summary>How is daylight saving handled?</summary><p>Through your browser built-in zone data. A March date in New York reads UTC-05:00 before the spring shift and UTC-04:00 after it, with no table to update.</p></details>
+<details><summary>Why do half hour zones matter?</summary><p>Places like Mumbai sit at UTC+05:30, so a round UTC hour lands on the half hour there. The table shows the exact local minutes.</p></details>
+<details><summary>What if my city is missing?</summary><p>The list covers 24 large cities. For a missing place, pick the nearest city sharing its zone, then confirm against an official clock.</p></details>
+<details><summary>Does the share link track me?</summary><p>No. The picks sit in the link itself. This page stores nothing and uploads nothing.</p></details>
+</section>
+<aside class="sponsor" aria-label="Sponsorship availability"><p class="kicker">Sponsor space, not active</p><p>A future sponsor could help keep this tool free. There are no ads or affiliate links on this page right now.</p><div class="ad-slot" data-ad-slot="timezones-below-faq" data-ad-status="reserved"><p class="ad-label">Advertisement</p><p class="ad-empty">Ad space reserved. No ad network is loaded until a publisher ID is configured.</p></div></aside>
+<section class="privacy" id="privacy"><h2>Your plans stay with you.</h2><p>This tool runs in your browser. It does not upload dates, set cookies, save meetings, or load analytics or ad scripts. Your host still sees ordinary page requests, like any site.</p><p>Times are planning estimates from browser zone data. Confirm flights, shifts, and deadlines against an official source.</p></section>
+<noscript><p>This planner needs JavaScript. Turn it on to see local times. The notes and FAQ above still read fine without it.</p></noscript>
+</main><footer><span class="brand">Time tool</span><span>One time in, every local time out.</span><a href="#privacy">Privacy and limits</a></footer>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pinkpelara.github.io/Self-contained-sites/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://pinkpelara.github.io/Self-contained-sites/cutwise/</loc>
@@ -11,5 +11,25 @@
   <url>
     <loc>https://pinkpelara.github.io/Self-contained-sites/sizeready/</loc>
     <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://pinkpelara.github.io/Self-contained-sites/qr/</loc>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://pinkpelara.github.io/Self-contained-sites/gpa/</loc>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://pinkpelara.github.io/Self-contained-sites/dates/</loc>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://pinkpelara.github.io/Self-contained-sites/timezones/</loc>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://pinkpelara.github.io/Self-contained-sites/loan/</loc>
+    <lastmod>2026-09-19</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pinkpelara.github.io/Self-contained-sites/dates/sitemap.xml

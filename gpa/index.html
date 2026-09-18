@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free GPA calculator with planner and CGPA | Grade tool</title>
+<meta name="description" content="Work out semester GPA and cumulative CGPA on US 4.0, 4.3, India 10 point, ECTS guide, and percentage scales. Free, no account, math stays on your device.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#7c2d12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free GPA calculator with planner and CGPA">
+<meta property="og:description" content="Enter courses, credits, and grades. See GPA, CGPA, and the average you need to hit a target. Free, no account.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free GPA calculator with planner and CGPA">
+<meta name="twitter:description" content="Semester GPA, CGPA, and target planner on five grade scales. Free and private.">
+<meta property="og:url" content="https://pinkpelara.github.io/Self-contained-sites/gpa/">
+<link rel="canonical" href="https://pinkpelara.github.io/Self-contained-sites/gpa/">
+<!-- AdSense site verification for pinkpelara.github.io -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5604852097687833" crossorigin="anonymous"></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%237c2d12'/%3E%3Cpath%20d='M18%2044l8-24%208%2016%208-24%204%2032'%20fill='none'%20stroke='white'%20stroke-width='4'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Grade tool GPA calculator","url":"https://pinkpelara.github.io/Self-contained-sites/gpa/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free GPA and CGPA calculator with five grade scales, repeated course handling, and a target GPA planner. Runs in the browser.","featureList":"Semester GPA, cumulative CGPA, repeated course replace, target GPA planner"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the ECTS mapping official?","acceptedAnswer":{"@type":"Answer","text":"No. ECTS publishes no official 4.0 table, so this page uses a rough guide of A=4.0, B=3.0, C=2.0, D=1.0, E=0.7, F=0. Ask your school which table it uses."}},{"@type":"Question","name":"What does repeated course replace do?","acceptedAnswer":{"@type":"Answer","text":"When replace is on, only the best attempt per course code counts. Without it, every attempt counts. Many schools use their own repeat rules, so treat this as an estimate."}},{"@type":"Question","name":"Does an A+ count more than an A?","acceptedAnswer":{"@type":"Answer","text":"On the US 4.0 scale here both count 4.0. On the 4.3 variant A+ counts 4.3. Check your school handbook."}},{"@type":"Question","name":"Do my grades leave my computer?","acceptedAnswer":{"@type":"Answer","text":"No. All math runs on your device. Nothing uploads."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header><a class="brand" href="./">Grade tool<span>Semester GPA, CGPA, and targets</span></a><nav aria-label="Main"><a href="#tool">Tool</a><a href="#scales">Scales</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a></nav></header>
+<main>
+<section class="hero"><p class="kicker">Free GPA math, five grade scales</p><h1>Know where your grades stand.</h1><p class="intro">List your courses with credits and grades, add any prior CGPA, and see the term GPA plus the running total. The planner then shows the average you need over your remaining credits to hit a target. No account, nothing uploads.</p><p><a class="button" href="#tool">Work out my GPA</a></p><p class="note">Scales differ by school. Check your handbook before you rely on a number here.</p></section>
+<section class="workspace" id="tool" aria-label="GPA calculator">
+<form id="gpa-form"><h2>Your courses and grades</h2>
+<label for="scale">Grade scale</label><select id="scale" name="scale"><option value="us40">US 4.0 (A+ 4.0)</option><option value="us43">US 4.3 (A+ 4.3)</option><option value="india10">India 10 point</option><option value="ects">ECTS guide (A to F)</option></select>
+<p class="hint" id="scale-note">Common US scale. A and A+ both count 4.0.</p>
+<div class="fields"><div><label for="prior-credits">Prior credits earned</label><input id="prior-credits" name="prior-credits" type="number" min="0" max="1000" step="any" value="0"></div><div><label for="prior-gpa">Prior CGPA</label><input id="prior-gpa" name="prior-gpa" type="number" min="0" step="any" value="0"></div></div>
+<label class="check"><input id="replace" name="replace" type="checkbox"> Repeated course: count only the best attempt per course code</label>
+<div id="rows"></div>
+<div class="actions"><button type="button" id="add" class="secondary">Add course</button><button type="submit">Calculate GPA</button></div>
+<fieldset class="planner"><legend>Target planner, optional</legend><div class="fields"><div><label for="target">Target CGPA</label><input id="target" name="target" type="number" min="0" step="any" placeholder="e.g. 3.5"></div><div><label for="remaining">Remaining credits</label><input id="remaining" name="remaining" type="number" min="0" step="any" placeholder="e.g. 15"></div></div></fieldset>
+<p id="error" role="alert"></p></form>
+<div class="results"><div class="result-top"><h2>Your results</h2></div><div id="output" aria-live="polite"><p class="hint">Add courses, then press Calculate GPA. Your numbers stay on this device.</p></div><div class="table-wrap"><h3>Percentage lookup</h3><p class="hint">Type a percentage to see the matching 4.0 points.</p><div class="fields"><div><label for="percent">Percentage 0 to 100</label><input id="percent" type="number" min="0" max="100" step="any" value="87"></div><div><label for="percent-out">Points on 4.0</label><input id="percent-out" readonly value="3.3"></div></div></div></div>
+</section>
+<section class="guide" id="scales"><p class="kicker">Which scale fits your school</p><h2>Pick the table your school uses.</h2><div class="columns"><article><h3>US 4.0 and 4.3</h3><p>The 4.0 table runs A+ 4.0 down to F 0.0 with plus and minus steps. The 4.3 variant counts A+ as 4.3 and matches 4.0 elsewhere. Many US transcripts cap at 4.0.</p></article><article><h3>India 10 point</h3><p>This page maps O 10, A+ 9, A 8, B+ 7, B 6, C 5, P 4, F 0. Boards and universities set their own bands, so confirm the passing grade and the F cutoff for your course.</p></article><article><h3>ECTS guide and percent</h3><p>ECTS publishes no official 4.0 table. The guide here maps A 4.0, B 3.0, C 2.0, D 1.0, E 0.7, F 0. The percent lookup counts 93 and up as 4.0, 90 as 3.7, down to 65 as 1.0.</p></article></div></section>
+<section class="faq" id="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions people actually ask</h2>
+<details><summary>Is the ECTS mapping official?</summary><p>No. Use it as a rough guide only and ask your school which table it applies to transfer credit.</p></details>
+<details><summary>What does repeated course replace do?</summary><p>With replace on, only the best attempt per course code counts toward the term. Without it, every attempt counts. Schools often cap repeats or average attempts instead.</p></details>
+<details><summary>Why does one course move my GPA so much?</summary><p>Credits weight the math. A 4 credit course counts twice as much as a 2 credit course at the same grade.</p></details>
+<details><summary>What if my target looks out of reach?</summary><p>The planner shows the exact average needed and flags when it sits above the scale max. Talk to an advisor about retakes, course load, and school policy.</p></details>
+</section>
+<aside class="sponsor" aria-label="Sponsorship availability"><p class="kicker">Sponsor space, not active</p><p>A future sponsor could help keep this tool free. There are no ads or affiliate links on this page right now.</p><div class="ad-slot" data-ad-slot="gpa-below-faq" data-ad-status="reserved"><p class="ad-label">Advertisement</p><p class="ad-empty">Ad space reserved. No ad network is loaded until a publisher ID is configured.</p></div></aside>
+<section class="privacy" id="privacy"><h2>Your grades stay with you.</h2><p>This tool runs in your browser. It does not upload grades, set cookies, save records, or load analytics or ad scripts. Your host still sees ordinary page requests, like any site.</p><p>Results are estimates from the tables on this page. Grading rules vary by school, so check your handbook and talk to an advisor for anything that matters.</p></section>
+<noscript><p>This calculator needs JavaScript. Turn it on to work out a GPA. The scale notes and FAQ above still read fine without it.</p></noscript>
+</main><footer><span class="brand">Grade tool</span><span>Plain GPA math, no account.</span><a href="#privacy">Privacy and limits</a></footer>
+</body>
+</html>
