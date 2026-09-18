@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumber Cut List Calculator With Saw Kerf | Cutwise</title>
+<meta name="description" content="Cutwise is a free lumber cut list calculator that fits your parts onto the fewest practical boards, counts your saw kerf, and prints a shop-ready plan. No account, no uploads.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#1c3a2a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cutwise: lumber cut list calculator with saw kerf">
+<meta property="og:description" content="Enter your board length, blade width, and cut list. Get a board-by-board plan you can print and take to the shop. Free, no account.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cutwise: lumber cut list calculator with saw kerf">
+<meta name="twitter:description" content="Fit your cut list onto fewer boards, with kerf counted. Free, private, printable.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%231c3a2a'/%3E%3Cpath%20d='M14%2040h36' stroke='%23f7f4ec' stroke-width='6' stroke-linecap='round'/%3E%3Cpath%20d='M32%2014v18m0%200-7-7m7%207%207-7' fill='none' stroke='%237fb3d5' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cutwise","url":"https://REPLACE-ME/cutwise/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free lumber cut list calculator that fits straight cuts onto boards, counts saw kerf, and prints a shop-ready plan. Runs in the browser; no account or uploads.","featureList":"Cut list layout, saw kerf allowance, board count estimate, printable plan"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is saw kerf counted?","acceptedAnswer":{"@type":"Answer","text":"Cutwise subtracts one blade width between neighboring cuts on the same board. The leftover shown already has those kerfs removed, so measure the leftover before trusting a final separating cut."}},{"@type":"Question","name":"Is this the smallest possible board count?","acceptedAnswer":{"@type":"Answer","text":"No. Cutwise uses a longest-first heuristic that finds a practical layout fast. It is a planning aid, not a proven optimum. Verify every measurement before cutting."}},{"@type":"Question","name":"Can I enter fractions like 24 1/2?","acceptedAnswer":{"@type":"Answer","text":"Not yet. Enter decimals instead, such as 24.5. Use one length per line, with an optional quantity like 24.5 x 4."}},{"@type":"Question","name":"How do I save the plan as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Press Print plan and choose Save as PDF in your browser print dialog."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#planner">Skip to the planner</a>
+<header><a class="brand" href="./">Cutwise<span>Cut list planner for the home shop</span></a><nav aria-label="Main"><a href="#planner">Planner</a><a href="#method">Kerf tips</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a></nav></header>
+<main>
+<section class="hero"><p class="kicker">Free board calculator for straight cuts</p><h1>Get more from every board.</h1><p class="intro">Type in your cut list and Cutwise spreads the parts across boards, with your blade width counted. This one runs start to finish on your own computer. Nothing uploads, there is no account, and your numbers stay in the room with you.</p><p><a class="button" href="#planner">Plan your cuts</a></p><p class="note">Built for same-size boards and straight cuts. It does not nest sheet goods.</p></section>
+<section class="workspace" id="planner" aria-label="Lumber cut planner">
+<form><h2>Your lumber and cut list</h2><label for="unit">Unit</label><select id="unit" name="unit"><option value="in">Inches</option><option value="mm">Millimeters</option></select><div class="fields"><div><label for="stock">Board length, usable after trim</label><input id="stock" name="stock" type="number" min="0.001" step="any" value="96" required></div><div><label for="kerf">Saw kerf, your blade width</label><input id="kerf" name="kerf" type="number" min="0" step="any" value="0.125" required></div></div><label for="pieces">Cut list</label><p id="piece-help" class="hint">One length per line. Add a quantity with x, like 24 x 4. Use decimals such as 24.5, not fractions. All entries use the unit you picked.</p><textarea id="pieces" name="pieces" rows="6" aria-describedby="piece-help" required>36 x 2
+24 x 4
+18 x 2</textarea><button type="submit">Calculate cutting plan</button><p id="error" role="alert"></p></form>
+<div class="results"><div class="result-top"><h2>Your cut plan</h2><button id="print" class="secondary" type="button" disabled>Print plan</button></div><div id="output" aria-live="polite"></div><p class="hint">Bars match the real lengths. The blue ticks between parts are the wood your blade turns into sawdust.</p></div>
+</section>
+<section class="guide" id="method"><p class="kicker">Before you make the first cut</p><h2>Count the blade, check the stock, then cut.</h2><div class="columns"><article><h3>Measure the kerf you actually cut</h3><p>Kerf is the slot your blade cuts out, often around 1/8 inch for a table saw. Cutwise holds one kerf between neighboring parts. The leftover already has those kerfs taken out, so if the leftover is thinner than your blade, buy a little extra stock.</p></article><article><h3>Enter the board you really have</h3><p>Trim the ragged ends first, then enter the usable length. This tool assumes every board matches that length. It ignores knots, bow, grain, and structural ratings, so look the lumber over before you commit.</p></article><article><h3>Know what the layout is</h3><p>Cutwise sorts parts longest-first and fills each board before opening the next. That finds a solid shop layout fast, but not a proven minimum. Double-check every number at the saw.</p></article></div></section>
+<section class="faq" id="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions from the shop</h2>
+<details><summary>How is saw kerf counted?</summary><p>One blade width is held between neighboring cuts on the same board, and the leftover shown already has those kerfs removed. Measure the leftover before trusting a final separating cut.</p></details>
+<details><summary>Is this the smallest possible board count?</summary><p>No. Cutwise uses a longest-first heuristic that finds a practical layout fast. It is a planning aid, not a proven optimum. Verify every measurement before cutting.</p></details>
+<details><summary>Can I enter fractions like 24 1/2?</summary><p>Not yet. Enter decimals instead, such as 24.5. Use one length per line, with an optional quantity like 24.5 x 4.</p></details>
+<details><summary>How do I save the plan as a PDF?</summary><p>Press Print plan and choose Save as PDF in your browser print dialog.</p></details>
+</section>
+<aside class="sponsor" aria-label="Sponsorship availability"><p class="kicker">Sponsor space, not active</p><p>A future shop sponsor could help keep this tool free. There are no ads or affiliate links on this page right now.</p></aside>
+<section class="privacy" id="privacy"><h2>Your project stays with you.</h2><p>Cutwise runs in your browser. This version does not upload measurements, set cookies, save projects, or load analytics or ad scripts. Your host still sees ordinary page requests, like any site. Printing uses your browser dialog, where Save as PDF is usually an option.</p><p>This is a planning aid, not building or safety advice. Results carry no guarantee of fitness for your project.</p></section>
+<noscript><p>This planner needs JavaScript. Turn it on to get a cutting plan. The kerf tips and FAQ above still read fine without it.</p></noscript>
+</main><footer><span class="brand">Cutwise</span><span>Built for the workbench, not the inbox.</span><a href="#privacy">Privacy and limits</a></footer>
+</body>
+</html>

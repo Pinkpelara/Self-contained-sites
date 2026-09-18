@@ -1,0 +1,10 @@
+{
+  "name": "sizeready",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "lint": "node --check engine.js && node --check app.js",
+    "typecheck": "npm exec --yes --package=typescript@5.9.3 -- tsc -p tsconfig.json"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "cutwise",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test planner.test.js",
+    "lint": "node --check planner.js && node --check app.js",
+    "typecheck": "tsc --allowJs --checkJs --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --lib ES2022,DOM planner.js app.js"
+  }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compress Images to a KB Size Limit Online, Free | SizeReady</title>
+<meta name="description" content="SizeReady converts JPG, PNG, and WebP batches to JPEG under the kilobyte limit you set. Free, no signup, and every file stays on your device.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#1e2b4f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SizeReady: fit images under a KB limit">
+<meta property="og:description" content="Batch-convert photos to JPEG at or under your kilobyte budget. Free, no signup, no uploads.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SizeReady: fit images under a KB limit">
+<meta name="twitter:description" content="Hit a KB upload limit without uploading your photos anywhere. Free and private.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231e2b4f'/%3E%3Cpath%20d='M17%2019h30'%20stroke='%23f7f3e8'%20stroke-width='5'%20stroke-linecap='round'/%3E%3Cpath%20d='M17%2045h30'%20stroke='%23f7f3e8'%20stroke-width='5'%20stroke-linecap='round'/%3E%3Cpath%20d='M32%2025v13m0%200-6-6m6%206%206-6'%20fill='none'%20stroke='%23c9de62'%20stroke-width='5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SizeReady","url":"https://REPLACE-ME/sizeready/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript and Canvas 2D","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free batch image tool that converts JPG, PNG, and WebP files to JPEG at or under a kilobyte budget, entirely in the browser.","featureList":"Batch JPEG conversion, target kilobyte budget, maximum dimensions, verified downloads"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does 1 KB mean 1,000 or 1,024 bytes here?","acceptedAnswer":{"@type":"Answer","text":"SizeReady counts 1 KB as 1,000 bytes, so a 200 KB target means 200,000 bytes or less. That also fits portals that quietly mean 1,024 bytes per KB."}},{"@type":"Question","name":"Will an under-budget file always be accepted?","acceptedAnswer":{"@type":"Answer","text":"No. SizeReady promises the byte budget only. Portals can still reject files for format, dimensions, DPI, aspect ratio, or naming, so check the official rules and preview the download."}},{"@type":"Question","name":"What happens to transparency or animation?","acceptedAnswer":{"@type":"Answer","text":"Transparent areas become white and animated images become one still JPEG frame. Check the download before you use it anywhere that matters."}},{"@type":"Question","name":"Can I download all results as one archive?","acceptedAnswer":{"@type":"Answer","text":"No. Each fitted image has its own download link. There is no archive option."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to the tool</a>
+<header><a class="brand" href="./">SizeReady<span>Photos that fit the upload form</span></a><nav aria-label="Main"><a href="#workspace">Tool</a><a href="#how-it-works">What changes</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a></nav></header>
+<main>
+<section class="hero"><p class="kicker">Free batch JPEG size reducer, in your browser</p><h1>Hit the upload limit on the first try.</h1><p class="intro">Got a form that says “max 200 KB”? Drop in up to 20 photos and SizeReady turns them into JPEGs at or under your limit. The signup is zero, the fee is zero, and your pictures stay on the machine in front of you.</p><p><a class="button" href="#workspace">Open the size tool</a></p><p class="note">Output is always JPEG. Width and height settings are ceilings, not exact sizes.</p></section>
+<section class="workspace" id="workspace" aria-label="Image resizing tool">
+<form id="settings"><h2>Your files and size limit</h2>
+<fieldset id="controls"><legend class="sr-only">Batch settings</legend>
+<label for="files">Photos to convert</label><p id="files-hint" class="hint">JPG, PNG, or WebP. Up to 20 files, 20 MB each, 100 MB per batch.</p><input id="files" name="files" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="files-hint">
+<div class="fields"><div class="wide"><label for="target">Size limit in kilobytes</label><input id="target" name="target" type="number" value="200" min="1" max="20000" aria-describedby="kb-hint"><p id="kb-hint" class="hint">Counted as 1 KB = 1,000 bytes.</p></div><div><label for="max-width">Widest allowed, in pixels</label><input id="max-width" name="max-width" type="number" value="1600" min="1" max="6000"></div><div><label for="max-height">Tallest allowed, in pixels</label><input id="max-height" name="max-height" type="number" value="1600" min="1" max="6000"></div></div>
+<label class="check"><input id="shrink" name="shrink" type="checkbox" checked> Let SizeReady shrink dimensions when compression alone can't reach the limit</label>
+<p class="hint">Unchecked, an image that misses at full size is listed as a miss instead of being scaled down.</p>
+<div class="actions"><button id="run" type="submit">Make images fit</button>
+<button id="clear" type="button" class="secondary">Clear files</button></div>
+<p id="error" role="alert"></p>
+</fieldset>
+</form>
+<div class="results"><div class="result-top"><h2>Your fitted files</h2><button id="demo" type="button" class="secondary">Try a sample photo</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<progress id="progress" value="0" max="20" hidden aria-label="Files processed"></progress>
+<div id="results"><p id="empty">Pick photos, set the kilobyte limit from the form, and press Make images fit. Each result gets its own download link below. Your filenames only label the downloads.</p></div>
+<p class="hint">Open each download and compare it with the original before you submit it. Hitting the size limit does not mean a school, employer, or government portal will accept it.</p>
+</div>
+</section>
+<section class="guide" id="how-it-works"><p class="kicker">What SizeReady does to a photo</p><h2>Smaller file, same photo, clear tradeoffs.</h2><div class="columns">
+<article><h3>Everything becomes a JPEG</h3><p>PNG and WebP inputs are converted. Clear areas turn white, animations become one still frame, and some fine detail goes away. That is the price of a much smaller file.</p></article>
+<article><h3>Your dimensions are ceilings</h3><p>Photos are never cropped and never enlarged. A small photo stays small. SizeReady first lowers JPEG quality between 0.30 and 0.94, then shrinks dimensions in 20% steps only if you allowed it.</p></article>
+<article><h3>A size fit is not an approval</h3><p>Job boards, schools, and immigration portals also check format, pixel size, DPI, aspect ratio, or filenames. SizeReady handles the byte count. You still need to check their checklist and preview the file.</p></article>
+</div></section>
+<section class="faq" id="faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions people actually ask</h2>
+<details><summary>What are the limits?</summary><p>Up to 20 files per batch, 20 MB per file, and 100 MB for the whole batch. No single image may decode beyond 24 megapixels, for example 6,000 by 4,000. File sizes are checked before processing; pixel dimensions are checked after decoding. Decoding itself can use significant memory.</p></details>
+<details><summary>Does KB mean 1,000 or 1,024 bytes?</summary><p>Here 1 KB is 1,000 bytes, so a 200 KB target means 200,000 bytes or less. That also fits any form that quietly means 1,024 bytes per KB, because 200,000 is smaller than 204,800. If a rule says 250 KiB, just enter 250.</p></details>
+<details><summary>Why did my photo come back smaller in pixels?</summary><p>Width and height are ceilings, not orders. Photos are never cropped and never enlarged. Your ceilings apply first. If lowering quality is not enough, the checkbox allows shrinking in 20% steps. This is a fast practical search, not a guarantee of the largest possible result.</p></details>
+<details><summary>Can I download everything at once?</summary><p>No. Each fitted image has its own download link and there is no archive option. Save the files one by one.</p></details>
+<details><summary>Is an under-limit file sure to be accepted?</summary><p>No. The byte budget is the only promise. Portals can reject files for format, pixel size, aspect ratio, DPI, or naming reasons no size tool can fix. Check the official rules before you submit.</p></details>
+<details><summary>What about transparency or animation?</summary><p>Clear areas become solid white, and animated inputs become one still frame. Look at the download before you rely on either feature.</p></details>
+</section>
+<aside class="ads" aria-label="Advertising availability"><p class="kicker">Ad space, not enabled</p><p>This page holds a spot for possible future support. No ads, sponsors, or affiliate links appear here now.</p></aside>
+<section class="privacy" id="privacy"><h2>Your photos never leave your device.</h2><p>SizeReady runs entirely in your browser. This version does not upload images, set cookies, save files, offer accounts, or load analytics or ad scripts. There is nothing to sign up for. Your host still sees ordinary page requests, like any website.</p><p>Very large batches lean on your browser memory, which is why the caps exist. This is a convenience for upload limits, not professional advice, and results carry no promise of acceptance by any particular site.</p></section>
+<noscript><p>This tool needs JavaScript to convert images. Turn it on to resize files. The explanations on this page still read fine without it.</p></noscript>
+</main>
+<footer><span class="brand">SizeReady</span><span>Small files, honest math, zero uploads.</span><a href="#privacy">Privacy and limits</a></footer>
+</body>
+</html>
